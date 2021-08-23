@@ -3,37 +3,19 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 import { ActionTypes } from './action-types'
 import { persistMiddleware } from './middlewares/persist-middleware'
-import reducers from './reducers'
+import reducers, { RootState } from './reducers'
 
 const middlewares = [thunk, persistMiddleware]
 
-/* const initialState = {
+const initialState: RootState = {
   cells: {
     loading: false,
     error: null,
-    order: [],
+    order: ['1'],
     data: {
       '1': {
-        content: "",
-        id: 1,
-        type: 'text'
-      }
-      
-    },
-  },
-} */
-
-export const store = createStore(
-  reducers,
-  {},
-  composeWithDevTools(applyMiddleware(...middlewares))
-)
-
-store.dispatch({
-  type: ActionTypes.INSERT_CELL_AFTER,
-  payload: {
-    id: '',
-    content: `
+        id: '1',
+        content: `
 # VP Compiler 
 This is an interactive coding environment. You can write Javascript, see it executed, and write comprehensive documentation using markdown. 
 - Click any text cell (including this one) to edit 
@@ -42,7 +24,16 @@ This is an interactive coding environment. You can write Javascript, see it exec
 - Re-order or delete cells using the button on the top right 
 - Add new cells by hovering on the divider between each cell 
 All of your changes get saved to the file you opened VP Compiler with. So if you ran npx vdp-cli serve test.js, all of the text and code you write will be saved to the test.js file. 
-    `,
-    type: 'text',
+        `,
+        type: 'text',
+      },
+    },
   },
-})
+  bundles: {},
+}
+
+export const store = createStore(
+  reducers,
+  initialState,
+  composeWithDevTools(applyMiddleware(...middlewares))
+)
