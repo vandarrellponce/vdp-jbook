@@ -75,7 +75,7 @@ const cellsReducer = produce(
 
       case ActionTypes.INSERT_CELL_AFTER: {
         const cell: Cell = {
-          content: '',
+          content: action.payload.content || '',
           id: randomId(),
           type: action.payload.type,
         }

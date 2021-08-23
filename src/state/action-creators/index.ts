@@ -36,11 +36,12 @@ export const moveCell = (id: string, direction: Direction): MoveCellAction => {
 
 export const insertCellAfter = (
   id: string | null,
-  cellType: CellTypes
+  cellType: CellTypes,
+  content: string | null
 ): InsertCellAfterAction => {
   return {
     type: ActionTypes.INSERT_CELL_AFTER,
-    payload: { id, type: cellType },
+    payload: { id, type: cellType, content },
   }
 }
 

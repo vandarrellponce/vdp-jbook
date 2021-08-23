@@ -12,13 +12,13 @@ const AddCell: React.FC<{
     <div className={`add-cell ${forceVisible && 'force-visible'}`}>
       <button
         className="button is-primary is-small is-rounded"
-        onClick={() => insertCellAfter(prevCellId, 'code')}
+        onClick={() => insertCellAfter(prevCellId, 'code', '')}
       >
         <FaPlus style={{ marginRight: '5px' }} /> Code
       </button>
       <button
         className="button is-primary is-small is-rounded"
-        onClick={() => insertCellAfter(prevCellId, 'text')}
+        onClick={() => insertCellAfter(prevCellId, 'text', '')}
       >
         <FaPlus style={{ marginRight: '5px' }} /> Text
       </button>
